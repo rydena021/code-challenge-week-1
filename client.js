@@ -1,40 +1,31 @@
-console.log('js');
 let clickCount = 0;
 
 $(readyNow);
 
-function readyNow() {
-  console.log('jq');
-  $('#createButton').on('click', handleClick)
-  $('#contentDiv').on('click', '.swapButton', swapClick)
-  $('#contentDiv').on('click', '.deleteButton', deleteClick)
-}
+function deleteClick() {
+  this.closest('div').remove();
+} // end deleteClick
 
 function handleClick() {
-  console.log('in handleClick');
   clickCount += 1;
-  let divEl = $(`<div class="generatedDiv" data-red="true"></div>`);
+  let divEl = $(`<div class="generatedDiv"></div>`);
   $(divEl).append(`<p>${clickCount}</p>`);
   $(divEl).append(`<button class="swapButton">Swap</button>`);
   $(divEl).append(`<button class="deleteButton">Delete</button>`);
   $('#contentDiv').append(divEl);
-}
+} // end handleClick
+
+function readyNow() {
+  $('#createButton').on('click', handleClick)
+  $('#contentDiv').on('click', '.swapButton', swapClick)
+  $('#contentDiv').on('click', '.deleteButton', deleteClick)
+} // end readyNow
 
 function swapClick() {
-  console.log('in swapClick');
-  let div = this.closest('div');
-  let red = $(div).data('red');
-  if (red) {
-    $(div).removeClass('generatedDiv').addClass('swapDiv');
-    $(div).data("red", false);
+  let divEl = this.closest('div');
+  if ($(divEl).attr('class') == 'generatedDiv') {
+    $(divEl).removeClass('generatedDiv').addClass('swapDiv');
   } else {
-    $(div).removeClass('swapDiv').addClass('generatedDiv');
-    $(div).data("red", true);
+    $(divEl).removeClass('swapDiv').addClass('generatedDiv');
   }
-}
-
-function deleteClick() {
-  console.log('in deleteClick');
-  let div = this.closest('div');
-  $(div).remove();
-}
+} // end swapClick
