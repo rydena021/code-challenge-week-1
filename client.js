@@ -16,9 +16,9 @@ function handleClick() {
 } // end handleClick
 
 function readyNow() {
-  $('#createButton').on('click', handleClick)
-  $('#contentDiv').on('click', '.swapButton', swapClick)
-  $('#contentDiv').on('click', '.deleteButton', deleteClick)
+  $('#createButton').on('click', handleClick);
+  $('#contentDiv').on('click', '.swapButton', swapClick);
+  $('#contentDiv').on('click', '.deleteButton', deleteClick);
 } // end readyNow
 
 function swapClick() {
