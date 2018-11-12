@@ -1,3 +1,7 @@
+body {
+  font-family: 'Cabin', sans-serif;
+}
+
 .generatedDiv {
   background-color: red;
 }
